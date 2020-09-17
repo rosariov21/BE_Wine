@@ -41,7 +41,7 @@ public class EmployeeRESTController {
 	 return this.employeeRepostory.findAll();
 	}
 	// get employee by id
-	 @GetMapping("/employee/{id}")
+	 @GetMapping("/employees/{id}")
 	 public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
 	   throws ResourceNotFoundException {
 	   Employee employee = employeeRepostory.findById(employeeId)
@@ -49,13 +49,13 @@ public class EmployeeRESTController {
 	   return ResponseEntity.ok().body(employee);
 	 }
 	// save employee
-	 @PostMapping("/employee")
+	 @PostMapping("/employees")
 	 public Employee createEmployee(@Valid @RequestBody Employee employee) {
 		 return employeeRepostory.save(employee);
 	 }
 	 
 //	// PUT : UPDATE EMPLOYEE DETAILS
-		@PutMapping("/employee/{id}")
+		@PutMapping("/employees/{id}")
 		public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId, 
 				@Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
 			Employee employee = employeeRepostory.findById(employeeId)
